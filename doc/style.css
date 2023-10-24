@@ -1,0 +1,22 @@
+body {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	color: #283739;
+}
+#player {
+	width: 90%;
+	max-width: 480px;
+	max-height: 80vh;
+	margin: auto;
+}
+
+#menu > a {
+	color: #22313f;
+	transition: all .3s ease;
+}
+
+#menu > a:hover,
+#menu > a.active {
+	color: #ff5722
+}

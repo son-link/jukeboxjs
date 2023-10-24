@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>JukeboxJS</title>
+		<style type="text/css">
+			body {
+				margin: 0;
+				padding: 0;
+				text-align: center;
+			}
+			#player {
+				width: 90%;
+				max-width: 480px;
+				max-height: 80vh;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>JukeboxJS</h1>
+		<div id="player">
+			<jukebox-js
+				playlist="assets/playlist.m3u"
+			/>
+		</div>
+	</body>
+	<script src="jukeboxjs.js" defer></script>
+</html>

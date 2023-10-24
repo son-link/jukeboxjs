@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>JukeboxJS</title>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="assets/prism.css" />
+	</head>
+	<body>
+		<h1>JukeboxJS</h1>
+		<nav id="menu">
+			<a href="#" class="active">One track</a>
+			<a href="local_playlist.html">Local playlist</a>
+			<a href="remote_files">Remote files</a>
+			<a href="colors.html">Change colors</a>
+		</nav>
+		<div id="player">
+			<h2>One track</h2>
+			<p>
+				<pre><code class="language-html">&lt;jukebox-js src="assets/Rocker.mp3" /></code></pre>
+			</p>
+			<jukebox-js src="assets/Rocker.mp3" />
+		</div>
+	</body>
+	<script src="jukeboxjs.js" defer></script>
+	<script src="assets/prism.js" defer></script>
+</html>
