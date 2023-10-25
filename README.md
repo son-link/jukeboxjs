@@ -10,12 +10,25 @@ Source code under the MIT license
 
 ## Install:
 
+### From source
 You just need to clone this repository or click on Code -> Download zip and copy the jubeboxjs.js file and the assets folder where you need it.
 
 Once done you must import the script using the &lt;script> tag.
 ```html
 <script src="jukebox.js" defer></script>
 ```
+
+### CDN
+
+You can also use the CDN, which also has the icons embedded. It's heavier, but you don't need to copy the assets folder, plus you'll always have it up to date.
+
+You can also download it and use it directly on your website.
+
+```html
+<script src="https://cdn.jsdelivr.net/gh/son-link/jukeboxjs@main/jukeboxjs.cdn.js"></script>
+```
+
+### Using tag
 
 To embed the player on your website you must use the following tag:
 ```html
