@@ -121,12 +121,23 @@ class JukeboxJS extends HTMLElement {
     return `
       <style>
         :host {
+          /* Colors */
           --text: ${this.color_text};
           --bg: ${this.color_bg};
           --playlist: ${this.color_playlist};
           --btn: ${this.color_btn};
           --range1: ${this.color_range};
           --range2: ${this.color_range2};
+          /* Icons */
+          --icon-play: url('assets/play.svg');
+          --icon-pause: url('assets/pause.svg');
+          --icon-previous: url('assets/previous.svg');
+          --icon-next: url('assets/next.svg');
+          --icon-backward: url('assets/seek-backward-10.svg');
+          --icon-forward: url('assets/seek-forward-10.svg');
+          --icon-volume: url('assets/volume-high.svg');
+          --icon-mute: url('assets/mute.svg');
+          --icon-playlist: url('assets/playlist.svg');
         }
 
         .flex {
@@ -221,9 +232,8 @@ class JukeboxJS extends HTMLElement {
           mask-repeat: no-repeat;
           -webkit-mask-repeat: no-repeat;
           background-color: var(--btn);
-          -webkit-mask-image: url('assets/play.svg');
-          mask-image: url('assets/play.svg');
-          -webkit-mask-image: url('assets/play.svg');
+          -webkit-mask-image: var(--icon-play);
+          mask-image: var(--icon-play);
         }
 
         #playlist li.current > .pl-icon {
@@ -252,13 +262,13 @@ class JukeboxJS extends HTMLElement {
         }
 
         #play-pause.playing > .icon {
-          -webkit-mask-image: url('assets/pause.svg');
-          mask-image: url('assets/pause.svg');
+          -webkit-mask-image: var(--icon-pause);
+          mask-image: var(--icon-pause);
         }
 
         #toggle-pl {
-          -webkit-mask-image: url('assets/playlist.svg');
-          mask-image: url('assets/playlist.svg');
+          -webkit-mask-image: var(--icon-playlist);
+          mask-image: var(--icon-playlist);
           float: right;
         }
 
@@ -271,28 +281,28 @@ class JukeboxJS extends HTMLElement {
         }
 
         #volume-icon {
-          -webkit-mask-image: url('assets/volume-high.svg');
-          mask-image: url('assets/volume-high.svg');
+          -webkit-mask-image: var(--icon-volume);
+          mask-image: var(--icon-volume);
         }
 
         #prev-track {
-          -webkit-mask-image: url('assets/previous.svg');
-          mask-image: url('assets/previous.svg');
+          -webkit-mask-image: var(--icon-previous);
+          mask-image: var(--icon-previous);
         }
 
         #next-track {
-          -webkit-mask-image: url('assets/next.svg');
-          mask-image: url('assets/next.svg');
+          -webkit-mask-image: var(--icon-next);
+          mask-image: var(--icon-next);
         }
 
         #backward {
-          -webkit-mask-image: url('assets/seek-backward-10.svg');
-          mask-image: url('assets/seek-backward-10.svg');
+          -webkit-mask-image: var(--icon-backward);
+          mask-image: var(--icon-backward);
         }
 
         #forward {
-          -webkit-mask-image: url('assets/seek-forward-10.svg');
-          mask-image: url('assets/seek-forward-10.svg');
+          -webkit-mask-image: var(--icon-forward);
+          mask-image: var(--icon-forward);
         }
 
         #backward,
@@ -308,8 +318,8 @@ class JukeboxJS extends HTMLElement {
         }
 
         #volume-icon.muted {
-          -webkit-mask-image: url('assets/mute.svg');
-          mask-image: url('assets/mute.svg');
+          -webkit-mask-image: var(--icon-mute);
+          mask-image: var(--icon-mute);
         }
 
         #volume,
