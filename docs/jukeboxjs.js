@@ -12,7 +12,7 @@ class JukeboxJS extends HTMLElement {
     this.color_playlist = '#2c5d63'
     this.color_range = this.color_playlist
     this.color_range2 = this.color_btn
-    
+
     // El shadow-root es, por así decirlo, el equivalente a document
     const shadowRoot = this.attachShadow({mode: 'open'});
 
@@ -129,8 +129,12 @@ class JukeboxJS extends HTMLElement {
           --range2: ${this.color_range2};
         }
 
-        #media-player {
+        .flex {
           display: flex;
+          flex-wrap: wrap;
+        }
+
+        #media-player {
           flex-direction: column;
           background-color: var(--bg);
           color: var(--text);
@@ -144,21 +148,20 @@ class JukeboxJS extends HTMLElement {
         }
 
         #player {
-          padding: .5rem;
+          padding: 0.5rem;
         }
 
         #controls,
         #volume,
         #time,
         #main-controls {
-          display: flex;
-          flex-wrap; wrap;
+          flex-wrap: wrap;
           align-items: center;
-          gap: .5rem
+          gap: .5rem;
         }
 
         #time {
-          margin-bottom: .5rem
+          margin-bottom: .5rem;
         }
 
         #controls {
@@ -182,12 +185,11 @@ class JukeboxJS extends HTMLElement {
         }
 
         #playlist.open {
-          max-height: inherit
+          max-height: inherit;
         }
 
         #playlist > li {
           cursor: pointer;
-          display: flex;
           height: 24px;
           line-height: 24px;
           padding: .5rem;
@@ -241,7 +243,6 @@ class JukeboxJS extends HTMLElement {
           width: 40px;
           height: 40px;
           border-radius: 50%;
-          display: flex;
           justify-content: center;
           align-items: center;
         }
@@ -266,7 +267,7 @@ class JukeboxJS extends HTMLElement {
         }
 
         #seek > input {
-          width: 100%
+          width: 100%;
         }
 
         #volume-icon {
@@ -313,10 +314,10 @@ class JukeboxJS extends HTMLElement {
 
         #volume,
         #toggle-pl-div {
-          width: 25%
+          width: 25%;
         }
 
-        input[type="range"] {
+        input[type=range] {
           -webkit-appearance: none;
           width: 100%;
           height: 7px;
@@ -327,7 +328,7 @@ class JukeboxJS extends HTMLElement {
           background-repeat: no-repeat;
         }
 
-        input[type="range"]::-webkit-slider-thumb {
+        input[type=range]::-webkit-slider-thumb {
           -webkit-appearance: none;
           height: 1.2rem;
           width: 1.2rem;
@@ -336,15 +337,15 @@ class JukeboxJS extends HTMLElement {
           box-shadow: 0 0 2px 0 #555;
           background-color: var(--btn);
         }
-        
-        input[type=range]::-webkit-slider-runnable-track  {
+
+        input[type=range]::-webkit-slider-runnable-track {
           -webkit-appearance: none;
           box-shadow: none;
           border: none;
           background: transparent;
         }
 
-        input[type="range"]::-moz-range-thumb {
+        input[type=range]::-moz-range-thumb {
           border: 0;
           border-radius: 50%;
           background-color: var(--btn);
@@ -352,42 +353,41 @@ class JukeboxJS extends HTMLElement {
           width: 1.2rem;
         }
 
-        input[type="range"]:focus::-moz-range-thumb {
+        input[type=range]:focus::-moz-range-thumb {
           border: 1px solid var(--playlist);
           outline: 3px solid var(--playlist);
-          outline-offset: 0.125rem; 
+          outline-offset: 0.125rem;
         }
-        
+
         @media (max-width: 575px) {
           #main-controls {
-            order: -1
+            order: -1;
           }
-
           #volume,
           #toggle-pl-div {
-            width: auto
+            width: auto;
           }
         }
       </style>
-      <div id="media-player">
+      <div id="media-player" class="flex">
         <div id="player">
           <div id="track-title">Son Link - JukeboxJS</div>
-          <div id="time">
+          <div id="time" class="flex">
             <div id="current-time">00:00:00</div>
              <div id="seek">
               <input type="range" min="0" max="100" value="0">
             </div>
             <div id="track-time">00:00:00</div>
           </div>
-          <div id="controls">
-            <div id="volume">
+          <div id="controls" class="flex">
+            <div id="volume" class="flex">
               <div id="volume-icon" class="icon"></div>
               <input type="range" min="0" max="100" value="100">
             </div>
-            <div id="main-controls">
+            <div id="main-controls" class="flex">
               <button id="prev-track" class="icon"></button>
               <button id="backward" class="icon"></button>
-              <div id="play-pause">
+              <div id="play-pause" class="flex">
                 <div class="icon"></div>
               </div>
               <button id="forward" class="icon"></button>
@@ -416,15 +416,15 @@ class JukeboxJS extends HTMLElement {
       this.currentTrack = 0
       this.track_title.innerText = title
     }
-    
+
     if(attr == 'playlist' && oldVal != newVal && newVal) {
       // Obtenemos la lista de reproducción
       const resp = await fetch(newVal);
       const data = await resp.text();
-      
+
       // Ahora vamos a obtener la URL base
       const base_url = newVal.split('/').slice(0, -1).join('/');
-      
+
       if (data) {
         // Procedemos a ir leyendo las lineas del fichero
         const lines = data.split('\n');
@@ -469,18 +469,6 @@ class JukeboxJS extends HTMLElement {
         this.style.setProperty('--range2', this.color_range2)
       }
     }
-    /*
-    if (attr == 'color-bg') this.color_bg = (!!newVal) ? newVal : '#283739'
-    if (attr == 'color-btn') this.color_btn = (!!newVal) ? newVal : '#a9c52f'
-    if (attr == 'color-playlist') this.color_playlist = (!!newVal) ? newVal : '#2c5d63'
-    */
-    /*
-    this.color_bg = '#283739'
-    this.color_btn = '#a9c52f'
-    this.color_playlist = '#2c5d63'
-    this.color_range = 'background-image: linear-gradient(to right, #2c5d63, #a9c52f);'
-    */
-    //this.shadowRoot.innerHTML = this.template;
   }
 
   makePlayList() {
@@ -488,6 +476,7 @@ class JukeboxJS extends HTMLElement {
     this.playlist.forEach( (line, index) => {
       const li = document.createElement('li')
       li.setAttribute('data-track', index)
+      li.classList.add('flex')
       li.innerHTML = `<div class="pl-icon"></div><div>${line.title}</div>`
       li.addEventListener('click', this.changeTrack)
       this.playlist_ul.appendChild(li)
@@ -528,30 +517,6 @@ class JukeboxJS extends HTMLElement {
       this.playlist_ul.querySelectorAll('li')[this.currentTrack].click()
     }
   }
-
-  // Esta función se dispara al conectarse el elemento
-  // Aquí definimos referencias a elementos, así como los listener de ellos
-  connectedCallback() {
-    // Vacía de momento
-  }
-
-  // Esta función se dispara al desconectar el Web Element
-  // Elimina el listener del input para evitar posibles problemas
-  disconnectedCallback() {
-    // Vacía de momento
-  }
-
-  /*
-  handleEvent(event) {
-    if (event.type === "export-ogt") {
-      this.ogt.export2png();
-    }
-  }
-
-  connectedCallback() {
-    document.addEventListener("export-ogt", this);
-  }
-  */
 }
 
 // Y finalmente definimos el nuevo elemento
