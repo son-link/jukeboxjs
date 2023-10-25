@@ -469,18 +469,6 @@ class JukeboxJS extends HTMLElement {
         this.style.setProperty('--range2', this.color_range2)
       }
     }
-    /*
-    if (attr == 'color-bg') this.color_bg = (!!newVal) ? newVal : '#283739'
-    if (attr == 'color-btn') this.color_btn = (!!newVal) ? newVal : '#a9c52f'
-    if (attr == 'color-playlist') this.color_playlist = (!!newVal) ? newVal : '#2c5d63'
-    */
-    /*
-    this.color_bg = '#283739'
-    this.color_btn = '#a9c52f'
-    this.color_playlist = '#2c5d63'
-    this.color_range = 'background-image: linear-gradient(to right, #2c5d63, #a9c52f);'
-    */
-    //this.shadowRoot.innerHTML = this.template;
   }
 
   makePlayList() {
@@ -528,30 +516,6 @@ class JukeboxJS extends HTMLElement {
       this.playlist_ul.querySelectorAll('li')[this.currentTrack].click()
     }
   }
-
-  // Esta función se dispara al conectarse el elemento
-  // Aquí definimos referencias a elementos, así como los listener de ellos
-  connectedCallback() {
-    // Vacía de momento
-  }
-
-  // Esta función se dispara al desconectar el Web Element
-  // Elimina el listener del input para evitar posibles problemas
-  disconnectedCallback() {
-    // Vacía de momento
-  }
-
-  /*
-  handleEvent(event) {
-    if (event.type === "export-ogt") {
-      this.ogt.export2png();
-    }
-  }
-
-  connectedCallback() {
-    document.addEventListener("export-ogt", this);
-  }
-  */
 }
 
 // Y finalmente definimos el nuevo elemento
